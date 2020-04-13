@@ -2,7 +2,7 @@
 
 ## /3-closed-variables
 
-> uncaught error: 4/11/2020, 4:31:30 PM 
+> uncaught error: 13/04/2020, 15:10:15 
 
 [../REVIEW.md](../REVIEW.md)
 
@@ -110,15 +110,15 @@ closure1("second call to closure1");
 - FAIL : assert 2
 ReferenceError: _ is not defined
     at Object.<anonymous> ( [ ... ] /exercises/3-closed-variables/exercise-1.js:14:40)
-    at Module._compile (internal/modules/cjs/loader.js:777:30)
-    at Object.Module._extensions..js (internal/modules/cjs/loader.js:788:10)
-    at Module.load (internal/modules/cjs/loader.js:643:32)
-    at Function.Module._load (internal/modules/cjs/loader.js:556:12)
-    at Module.require (internal/modules/cjs/loader.js:683:19)
-    at require (internal/modules/cjs/helpers.js:16:16)
+    at Module._compile (internal/modules/cjs/loader.js:1151:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1171:10)
+    at Module.load (internal/modules/cjs/loader.js:1000:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:899:14)
+    at Module.require (internal/modules/cjs/loader.js:1040:19)
+    at require (internal/modules/cjs/helpers.js:72:18)
     at evaluate ( [ ... ] /review.js:229:7)
     at Object.<anonymous> ( [ ... ] /review.js:244:1)
-    at Module._compile (internal/modules/cjs/loader.js:777:30)
+    at Module._compile (internal/modules/cjs/loader.js:1151:30)
 ```
 
 ```js
@@ -157,15 +157,15 @@ console.assert(parentScopeVariable === _, "assert 5");
 ```txt
 TypeError: closure1 is not a function
     at Object.<anonymous> ( [ ... ] /exercises/3-closed-variables/exercise-2.js:8:17)
-    at Module._compile (internal/modules/cjs/loader.js:777:30)
-    at Object.Module._extensions..js (internal/modules/cjs/loader.js:788:10)
-    at Module.load (internal/modules/cjs/loader.js:643:32)
-    at Function.Module._load (internal/modules/cjs/loader.js:556:12)
-    at Module.require (internal/modules/cjs/loader.js:683:19)
-    at require (internal/modules/cjs/helpers.js:16:16)
+    at Module._compile (internal/modules/cjs/loader.js:1151:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1171:10)
+    at Module.load (internal/modules/cjs/loader.js:1000:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:899:14)
+    at Module.require (internal/modules/cjs/loader.js:1040:19)
+    at require (internal/modules/cjs/helpers.js:72:18)
     at evaluate ( [ ... ] /review.js:229:7)
     at Object.<anonymous> ( [ ... ] /review.js:244:1)
-    at Module._compile (internal/modules/cjs/loader.js:777:30)
+    at Module._compile (internal/modules/cjs/loader.js:1151:30)
 ```
 
 ```js

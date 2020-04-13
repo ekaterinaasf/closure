@@ -2,7 +2,7 @@
 
 ## /exercises
 
-> uncaught error: 4/11/2020, 4:31:30 PM 
+> uncaught error: 13/04/2020, 15:10:15 
 
 * [/1-identifying-closure](./1-identifying-closure/REVIEW.md) - no status
   * [/example-1-returning-functions.js](./1-identifying-closure/REVIEW.md#example-1-returning-functionsjs) - example - pass
@@ -12,8 +12,8 @@
   * [/example-5-sometimes-creates-closure-b.js](./1-identifying-closure/REVIEW.md#example-5-sometimes-creates-closure-bjs) - example - uncaught error
 * [/2-basic-closure](./2-basic-closure/REVIEW.md) - uncaught error
   * [/example-parent-and-own-values.js](./2-basic-closure/REVIEW.md#example-parent-and-own-valuesjs) - example - no status
-  * [/exercise-1.js](./2-basic-closure/REVIEW.md#exercise-1js) - uncaught error
-  * [/exercise-2.js](./2-basic-closure/REVIEW.md#exercise-2js) - uncaught error
+  * [/exercise-1.js](./2-basic-closure/REVIEW.md#exercise-1js) - pass
+  * [/exercise-2.js](./2-basic-closure/REVIEW.md#exercise-2js) - pass
   * [/exercise-3.js](./2-basic-closure/REVIEW.md#exercise-3js) - uncaught error
   * [/exercise-4.js](./2-basic-closure/REVIEW.md#exercise-4js) - uncaught error
 * [/3-closed-variables](./3-closed-variables/REVIEW.md) - uncaught error

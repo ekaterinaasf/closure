@@ -4,21 +4,21 @@
 
 const doesItClose = (func, arg) => {
   const returnVal = func(arg);
-  const returnedAFunction = typeof returnVal === 'function';
+  const returnedAFunction = typeof returnVal === "function";
   const returnedArgument = arg === returnVal;
 
   const createsAClosure = returnedAFunction && !returnedArgument;
   return createsAClosure;
-}
+};
 
 const never = (x) => {
   return x;
-}
+};
 
 const whenPassed4 = doesItClose(never, 4);
 console.assert(whenPassed4 === null, "... when passed 4");
 
-const whenPassedAFunction = doesItClose(never, function () { });
+const whenPassedAFunction = doesItClose(never, function () {});
 console.assert(whenPassedAFunction === null, "... when passed a function");
 
 const whenPassedAnArray = doesItClose(never, []);

@@ -1,13 +1,13 @@
 const freeOrNot = (parameter) => {
   const localVariable = "declared in function";
   freeVariable; // not declared locally or passed as a parameter
-}
+};
 
-const freeVariable = 'declared in parent scope';
+const freeVariable = "declared in parent scope";
 freeOrNot("parameter value");
 
 /*
-Free Variables
+Free Variables 
 
   "Free variables are simply the variables
     that are neither locally declared

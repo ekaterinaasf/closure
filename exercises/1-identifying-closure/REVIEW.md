@@ -2,7 +2,7 @@
 
 ## /1-identifying-closure
 
-> uncaught error: 4/11/2020, 4:31:30 PM 
+> uncaught error: 13/04/2020, 15:10:15 
 
 [../REVIEW.md](../REVIEW.md)
 
@@ -71,21 +71,21 @@ newFunction();
 
 const doesItClose = (func, arg) => {
   const returnVal = func(arg);
-  const returnedAFunction = typeof returnVal === 'function';
+  const returnedAFunction = typeof returnVal === "function";
   const returnedArgument = arg === returnVal;
 
   const createsAClosure = returnedAFunction && !returnedArgument;
   return createsAClosure;
-}
+};
 
 const never = (x) => {
   return x;
-}
+};
 
 const whenPassed4 = doesItClose(never, 4);
 console.assert(whenPassed4 === null, "... when passed 4");
 
-const whenPassedAFunction = doesItClose(never, function () { });
+const whenPassedAFunction = doesItClose(never, function () {});
 console.assert(whenPassedAFunction === null, "... when passed a function");
 
 const whenPassedAnArray = doesItClose(never, []);
@@ -112,24 +112,24 @@ console.assert(whenPassedItself === null, "... when passed itself");
 
 const doesItClose = (func, arg) => {
   const returnVal = func(arg);
-  const returnedAFunction = typeof returnVal === 'function';
+  const returnedAFunction = typeof returnVal === "function";
   const returnedArgument = arg === returnVal;
 
   const createsAClosure = returnedAFunction && !returnedArgument;
   return createsAClosure;
-}
+};
 
 const always = (x) => {
   return function () {
-    console.log(x)
+    console.log(x);
   };
-}
+};
 
 const whenPassed4 = doesItClose(always, 4);
 const alwaysLogs4 = always(4);
 
-const whenPassedAFunction = doesItClose(always, function bye() { });
-const alwaysLogsHi = always(function hi() { });
+const whenPassedAFunction = doesItClose(always, function bye() {});
+const alwaysLogsHi = always(function hi() {});
 
 const whenPassedAnArray = doesItClose(always, []);
 const alwaysLogsArray = always([]);
@@ -138,7 +138,7 @@ const whenPassedItself = doesItClose(always, always);
 const alwaysLogsAlways = always(always);
 
 alwaysLogs4(), alwaysLogsHi(), alwaysLogsArray(), alwaysLogsAlways();
-alwaysLogs4(), alwaysLogsHi(), alwaysLogsArray(), alwaysLogsAlways();
+//alwaysLogs4(), alwaysLogsHi(), alwaysLogsArray(), alwaysLogsAlways();
 
 ```
 
@@ -155,12 +155,12 @@ alwaysLogs4(), alwaysLogsHi(), alwaysLogsArray(), alwaysLogsAlways();
 ReferenceError: x is not defined
     at hi ( [ ... ] /exercises/1-identifying-closure/example-4-sometimes-creates-closure-a.js:30:30)
     at Object.<anonymous> ( [ ... ] /exercises/1-identifying-closure/example-4-sometimes-creates-closure-a.js:32:1)
-    at Module._compile (internal/modules/cjs/loader.js:777:30)
-    at Object.Module._extensions..js (internal/modules/cjs/loader.js:788:10)
-    at Module.load (internal/modules/cjs/loader.js:643:32)
-    at Function.Module._load (internal/modules/cjs/loader.js:556:12)
-    at Module.require (internal/modules/cjs/loader.js:683:19)
-    at require (internal/modules/cjs/helpers.js:16:16)
+    at Module._compile (internal/modules/cjs/loader.js:1151:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1171:10)
+    at Module.load (internal/modules/cjs/loader.js:1000:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:899:14)
+    at Module.require (internal/modules/cjs/loader.js:1040:19)
+    at require (internal/modules/cjs/helpers.js:72:18)
     at evaluate ( [ ... ] /review.js:229:7)
     at Object.<anonymous> ( [ ... ] /review.js:244:1)
 ```
@@ -213,15 +213,15 @@ resultFromFunction();
 ```txt
 TypeError: resultFrom4 is not a function
     at Object.<anonymous> ( [ ... ] /exercises/1-identifying-closure/example-5-sometimes-creates-closure-b.js:32:1)
-    at Module._compile (internal/modules/cjs/loader.js:777:30)
-    at Object.Module._extensions..js (internal/modules/cjs/loader.js:788:10)
-    at Module.load (internal/modules/cjs/loader.js:643:32)
-    at Function.Module._load (internal/modules/cjs/loader.js:556:12)
-    at Module.require (internal/modules/cjs/loader.js:683:19)
-    at require (internal/modules/cjs/helpers.js:16:16)
+    at Module._compile (internal/modules/cjs/loader.js:1151:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1171:10)
+    at Module.load (internal/modules/cjs/loader.js:1000:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:899:14)
+    at Module.require (internal/modules/cjs/loader.js:1040:19)
+    at require (internal/modules/cjs/helpers.js:72:18)
     at evaluate ( [ ... ] /review.js:229:7)
     at Object.<anonymous> ( [ ... ] /review.js:244:1)
-    at Module._compile (internal/modules/cjs/loader.js:777:30)
+    at Module._compile (internal/modules/cjs/loader.js:1151:30)
 ```
 
 ```js

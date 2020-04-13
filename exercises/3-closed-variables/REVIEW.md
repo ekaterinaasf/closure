@@ -2,15 +2,15 @@
 
 ## /3-closed-variables
 
-> uncaught error: 13/04/2020, 15:10:15 
+> pass: 13/04/2020, 16:22:54 
 
 [../REVIEW.md](../REVIEW.md)
 
 * [/example-1-a-free-variable.js](#example-1-a-free-variablejs) - example - no status
 * [/example-2-not-from-closure.js](#example-2-not-from-closurejs) - example - no status
 * [/example-3-from-closure.js](#example-3-from-closurejs) - example - no status
-* [/exercise-1.js](#exercise-1js) - uncaught error
-* [/exercise-2.js](#exercise-2js) - uncaught error
+* [/exercise-1.js](#exercise-1js) - pass
+* [/exercise-2.js](#exercise-2js) - pass
 
 ---
 
@@ -23,13 +23,13 @@
 const freeOrNot = (parameter) => {
   const localVariable = "declared in function";
   freeVariable; // not declared locally or passed as a parameter
-}
+};
 
-const freeVariable = 'declared in parent scope';
+const freeVariable = "declared in parent scope";
 freeOrNot("parameter value");
 
 /*
-Free Variables
+Free Variables 
 
   "Free variables are simply the variables
     that are neither locally declared
@@ -82,8 +82,8 @@ const closeIt = (parentParam) => {
   return function (ownParam) {
     var ownLocal = "declared in body : " + ownParam[ownParam.length - 1];
     valueFromClosure = "closed side-effect : " + ownParam;
-  }
-}
+  };
+};
 
 const closure1 = closeIt("1");
 closure1("first call to closure1");
@@ -102,28 +102,21 @@ closure1("second call to closure1");
 
 ## /exercise-1.js
 
-* uncaught error
+* pass
 * [review source](./exercise-1.js)
 
 ```txt
-- FAIL : assert 1
-- FAIL : assert 2
-ReferenceError: _ is not defined
-    at Object.<anonymous> ( [ ... ] /exercises/3-closed-variables/exercise-1.js:14:40)
-    at Module._compile (internal/modules/cjs/loader.js:1151:30)
-    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1171:10)
-    at Module.load (internal/modules/cjs/loader.js:1000:32)
-    at Function.Module._load (internal/modules/cjs/loader.js:899:14)
-    at Module.require (internal/modules/cjs/loader.js:1040:19)
-    at require (internal/modules/cjs/helpers.js:72:18)
-    at evaluate ( [ ... ] /review.js:229:7)
-    at Object.<anonymous> ( [ ... ] /review.js:244:1)
-    at Module._compile (internal/modules/cjs/loader.js:1151:30)
++ PASS : assert 1
++ PASS : assert 2
++ PASS : assert 3
++ PASS : assert 4
++ PASS : assert 5
 ```
 
 ```js
 const usesParentVariable = (param) => {
   // write me!
+  return param + parentScopeVariable + "local";
 };
 
 let parentScopeVariable = "parentScope";
@@ -135,13 +128,16 @@ const result2 = usesParentVariable(undefined);
 console.assert(result2 === "undefinedparentScopelocal", "assert 2");
 
 parentScopeVariable = usesParentVariable("spoon");
-console.assert(parentScopeVariable === _, "assert 3");
+console.assert(parentScopeVariable === "spoonparentScopelocal", "assert 3");
 
-const result3 = usesParentVariable(_);
-console.assert(result3 === "spoonparentScopelocallocal", "assert 4");
+const result3 = usesParentVariable("spoon");
+console.assert(result3 === "spoonspoonparentScopelocallocal", "assert 4");
 
 parentScopeVariable = usesParentVariable("spoon");
-console.assert(parentScopeVariable === _, "assert 5");
+console.assert(
+  parentScopeVariable === "spoonspoonparentScopelocallocal",
+  "assert 5"
+);
 
 ```
 
@@ -151,26 +147,24 @@ console.assert(parentScopeVariable === _, "assert 5");
 
 ## /exercise-2.js
 
-* uncaught error
+* pass
 * [review source](./exercise-2.js)
 
 ```txt
-TypeError: closure1 is not a function
-    at Object.<anonymous> ( [ ... ] /exercises/3-closed-variables/exercise-2.js:8:17)
-    at Module._compile (internal/modules/cjs/loader.js:1151:30)
-    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1171:10)
-    at Module.load (internal/modules/cjs/loader.js:1000:32)
-    at Function.Module._load (internal/modules/cjs/loader.js:899:14)
-    at Module.require (internal/modules/cjs/loader.js:1040:19)
-    at require (internal/modules/cjs/helpers.js:72:18)
-    at evaluate ( [ ... ] /review.js:229:7)
-    at Object.<anonymous> ( [ ... ] /review.js:244:1)
-    at Module._compile (internal/modules/cjs/loader.js:1151:30)
++ PASS : assert 1
++ PASS : assert 2
++ PASS : assert 3
++ PASS : assert 4
++ PASS : assert 5
++ PASS : assert 6
 ```
 
 ```js
 const closesParentParamter = (parentParam) => {
   // write me!
+  return function (arg) {
+    return arg.split("").join(parentParam).replace(/\s/g, "");
+  };
 };
 
 const closure1 = closesParentParamter("|");
@@ -183,18 +177,17 @@ const result2 = closure2("+(=)+");
 console.assert(result2 === "+~(~=~)~+", "assert 2");
 
 const result3 = closure1("abc");
-console.assert(result3 === _, "assert 3");
+console.assert(result3 === "a|b|c", "assert 3");
 
 const result4 = closure2("xyz");
-console.assert(result4 === _, "assert 4");
+console.assert(result4 === "x~y~z", "assert 4");
 
-
-const closure3 = closesParentParamter(_);
-const result5 = closure3(_);
+const closure3 = closesParentParamter("-");
+const result5 = closure3("-0 1-");
 console.assert(result5 === "--0--1--", "assert 5");
 
-const closure4 = closesParentParamter(_);
-const result6 = closure4(_);
+const closure4 = closesParentParamter("-");
+const result6 = closure4("-1 0-");
 console.assert(result6 === "--1--0--", "assert 6");
 
 ```

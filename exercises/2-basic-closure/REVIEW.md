@@ -2,15 +2,15 @@
 
 ## /2-basic-closure
 
-> uncaught error: 13/04/2020, 15:10:15 
+> pass: 13/04/2020, 16:22:54 
 
 [../REVIEW.md](../REVIEW.md)
 
 * [/example-parent-and-own-values.js](#example-parent-and-own-valuesjs) - example - no status
 * [/exercise-1.js](#exercise-1js) - pass
 * [/exercise-2.js](#exercise-2js) - pass
-* [/exercise-3.js](#exercise-3js) - uncaught error
-* [/exercise-4.js](#exercise-4js) - uncaught error
+* [/exercise-3.js](#exercise-3js) - pass
+* [/exercise-4.js](#exercise-4js) - pass
 
 ---
 
@@ -136,21 +136,16 @@ console.assert(result5 === result6, "results 5 & 6");
 
 ## /exercise-3.js
 
-* uncaught error
+* pass
 * [review source](./exercise-3.js)
 
 ```txt
-ReferenceError: _ is not defined
-    at Object.<anonymous> ( [ ... ] /exercises/2-basic-closure/exercise-3.js:12:28)
-    at Module._compile (internal/modules/cjs/loader.js:1151:30)
-    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1171:10)
-    at Module.load (internal/modules/cjs/loader.js:1000:32)
-    at Function.Module._load (internal/modules/cjs/loader.js:899:14)
-    at Module.require (internal/modules/cjs/loader.js:1040:19)
-    at require (internal/modules/cjs/helpers.js:72:18)
-    at evaluate ( [ ... ] /review.js:229:7)
-    at Object.<anonymous> ( [ ... ] /review.js:244:1)
-    at Module._compile (internal/modules/cjs/loader.js:1151:30)
++ PASS : result 1
++ PASS : result 2
++ PASS : result 3
++ PASS : result 4
++ PASS : result 5
++ PASS : result 6
 ```
 
 ```js
@@ -159,31 +154,29 @@ const closeIt = (paramParent) => {
   return function (paramOwn) {
     const localOwn = "d";
     return paramParent + localParent + paramOwn + localOwn;
-  }
-}
+  };
+};
 
-const closure1 = closeIt("a");
+const closure1 = closeIt("a"); //func(arg)=>"a"+"b"+arg+"d"
 
-const result1 = closure1("c");
-console.assert(result1 === _, "result 1");
+const result1 = closure1("c"); //func(arg)=>"a"+"b"+"c+"d"
+console.assert(result1 === "abcd", "result 1");
 
 const result2 = closure1("x");
-console.assert(result2 === _, "result 2");
+console.assert(result2 === "abxd", "result 2");
 
-
-const closure2 = closeIt("iii");
+const closure2 = closeIt("iii"); //func(arg)=>"iii"+"b"+arg+"d"
 
 const result3 = closure2("2");
-console.assert(result3 === _, "result 3");
+console.assert(result3 === "iiib2d", "result 3");
 
 const result4 = closure2("--");
-console.assert(result4 === _, "result 4");
-
+console.assert(result4 === "iiib--d", "result 4");
 
 const result5 = closure1(8);
-console.assert(result5 === _, "result 5");
+console.assert(result5 === "ab8d", "result 5");
 
-const result6 = closure2(_)
+const result6 = closure2(" ");
 console.assert(result6 === "iiib d", "result 6");
 
 ```
@@ -194,52 +187,45 @@ console.assert(result6 === "iiib d", "result 6");
 
 ## /exercise-4.js
 
-* uncaught error
+* pass
 * [review source](./exercise-4.js)
 
 ```txt
-ReferenceError: _ is not defined
-    at Object.<anonymous> ( [ ... ] /exercises/2-basic-closure/exercise-4.js:10:28)
-    at Module._compile (internal/modules/cjs/loader.js:1151:30)
-    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1171:10)
-    at Module.load (internal/modules/cjs/loader.js:1000:32)
-    at Function.Module._load (internal/modules/cjs/loader.js:899:14)
-    at Module.require (internal/modules/cjs/loader.js:1040:19)
-    at require (internal/modules/cjs/helpers.js:72:18)
-    at evaluate ( [ ... ] /review.js:229:7)
-    at Object.<anonymous> ( [ ... ] /review.js:244:1)
-    at Module._compile (internal/modules/cjs/loader.js:1151:30)
++ PASS : result 1
++ PASS : result 2
++ PASS : result 3
++ PASS : result 4
++ PASS : result 5
++ PASS : result 6
 ```
 
 ```js
 const closeIt = (x, y) => {
   return function (x) {
     return x + y;
-  }
-}
+  };
+};
 
-const closure_4_5 = closeIt(4, 5);
+const closure_4_5 = closeIt(4, 5); //f(arg)=>arg+5
 
 const result1 = closure_4_5(200);
-console.assert(result1 === _, "result 1");
+console.assert(result1 === 205, "result 1");
 
 const result2 = closure_4_5(-3);
-console.assert(result2 === _, "result 2");
+console.assert(result2 === 2, "result 2");
 
-
-const closure_false_true = closeIt(false, true);
+const closure_false_true = closeIt(false, true); //f(arg)=>arg+true;
 
 const result3 = closure_false_true(200);
-console.assert(result3 === _, "result 3");
+console.assert(result3 === 201, "result 3");
 
 const result4 = closure_false_true(-3);
-console.assert(result4 === _, "result 4");
-
+console.assert(result4 === -2, "result 4");
 
 const result5 = closure_4_5(1);
-console.assert(result5 === _, "result 5");
+console.assert(result5 === 6, "result 5");
 
-const result6 = closure_4_5(_) + closure_false_true(_);
+const result6 = closure_4_5(1) + closure_false_true(-1);
 console.assert(result6 === 6, "result 6");
 
 ```

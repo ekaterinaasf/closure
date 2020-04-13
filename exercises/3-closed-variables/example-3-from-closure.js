@@ -3,8 +3,8 @@ const closeIt = (parentParam) => {
   return function (ownParam) {
     var ownLocal = "declared in body : " + ownParam[ownParam.length - 1];
     valueFromClosure = "closed side-effect : " + ownParam;
-  }
-}
+  };
+};
 
 const closure1 = closeIt("1");
 closure1("first call to closure1");
